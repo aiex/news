@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.select("id, name").order("updated_at DESC").page(params[:page]).per(2)
+    @categories = Category.select("id, name").order("updated_at DESC").page(params[:page]).per(5)
     respond_to do |format|
       format.html # index.html.erb
       format.js { render 'index.js.erb' }
