@@ -1,5 +1,6 @@
 
 class CategoriesController < ApplicationController
+  before_filter :find_category, only: [:show, :edit, :update, :destroy]
   # GET /categories
   # GET /categories.json
   def index
@@ -13,8 +14,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @category = Category.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }
@@ -34,7 +33,6 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
   end
 
   # POST /categories
@@ -56,8 +54,6 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
-    @category = Category.find(params[:id])
-
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to categories_path, notice: 'Category was successfully updated.' }
@@ -72,12 +68,18 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @category = Category.find(params[:id])
+    redirect_to categories_url, alert: "Access denied"
     @category.destroy
 
     respond_to do |format|
       format.html { redirect_to categories_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def find_category
+    @category = Category.select("id, name").find_by_id(params[:id])
+    redirect_to categories_url, alert: "Category not found" unless @category
   end
 end
