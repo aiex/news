@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsApp</title>
+  <title>NewsApp</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= yield :style %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">News Application</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <%= is_active_controller?('news_feeds') %>
+              <%= link_to "News", news_feeds_path %>
+            </li>
+            <%= is_active_controller?('lists') %>
+              <%= link_to "Lists", lists_path %>
+            </li>
+            <%= is_active_controller?('rss_links') %>
+              <%= link_to "Rss", rss_links_path %>
+            </li>
+            <%= is_active_controller?('categories') %>
+              <%= link_to "Categories", categories_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <% if flash[:notice].present? || flash[:error].present? %>
+      <div class="alert <%= flash[:notice].present? ? 'alert-info' : '' %>">
+        <%= notice %>
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="span9"><%= yield %></div>
+      <div class="span3">
+        <% if @recent_lists %>
+          <!--h1>Lists</h1-->
+          <% @recent_lists.each do |recent_list| %>
+            <h3><a href='#' ><%= recent_list.name %></a></h3>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row"><%= yield :new_row %></div>
+  </div>
+<div id='timeDelta' style="display: none;"></div>
+<%= javascript_include_tag "application" %>
+<%= yield :js %>
+<%#= javascript_tag("setTimeDelta('#{Time.now.getutc.iso8601}')") %>
 </body>
 </html>

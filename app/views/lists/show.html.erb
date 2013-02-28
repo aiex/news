@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h1 list-id="<%= @list.id %>">List</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @list.name %></dd>
+  <dt><strong>Rss Urls:</strong></dt>
+  <dd><%= @rss_links.select{|rss| @list.rss_link_ids.include?(rss[:id])}.map(&:title).join(", ") unless @list.rss_link_ids.empty? %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to "Back", lists_path, :class => 'btn'  %>
+  <%= link_to "Edit", edit_list_path(@list), :class => 'btn-success btn' %>
+  <%= link_to "Delete", list_path(@list), :method => 'delete',
+              :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>
+<% if @rss_links %>
+  <%= content_for :new_row do %>
+    <div class="span9">
+      <hr></hr>
+      <h3 title="<%= @list.name %>">Add Rss Links to <%= truncate(@list.name, length: 15) %></h3>
+      <hr></hr>
+      <div class='row'>
+        <div class='span5'>
+          <h4>Click on Add link to add the Rss Link in the list</h4>
+          <table class='table' id='rssLinks'>
+            <% @rss_links.each do |rss_link| %>
+              <% next if @list.rss_link_ids.include?(rss_link.id) %>
+              <tr rss-id="<%= rss_link.id %>" title="<%= rss_link.title %>">
+                <td><%= truncate(rss_link.title, length: 20) %></td>
+                <td><a href='javascript:void(0)'>Add</a></td>
+              </tr>
+            <% end%>
+          </table>
+        </div>
+        <div class='span4'>
+          <h4>List includes following Rss Links</h4>
+          <div class="well" id="rssTokens" style="min-height: 100px; padding: 5px 8px;">
+            <% @rss_links.select{|rss| @list.rss_link_ids.include?(rss.id)}.each do |rss_link| %>
+              <span class='token' rss-id="<%= rss_link.id %>" title="<%=rss_link.title %>">
+                <%= truncate(rss_link.title, length: 20) %>
+                <a href="javascript: void(0)">x</a>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+    </div>
+  <% end %>
+<% end %>
+<%= content_for :js do %>
+  <%= javascript_include_tag "lists" %>
+<% end %>

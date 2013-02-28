@@ -1,0 +1,8 @@
+<%- model_class = @rss_link.class -%>
+<div class="page-header">
+  <h1>New Rss link</h1>
+</div>
+<%= render 'form' %>
+<%= content_for :js do %>
+  <%= javascript_include_tag "rss_links" %>
+<% end %>

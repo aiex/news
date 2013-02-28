@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require twitter/bootstrap
+//= require timeago
+$(document).ready(function() {
+  $("abbr.timeago").timeago();
+});
+$(document).on('click', ".pagination ul li:not(.active) a", function(){
+  $(".pagination ul li").addClass("disabled");
+});

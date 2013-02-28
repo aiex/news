@@ -1,0 +1,67 @@
+<div class="page-header">
+  <h1 rss-link-id="<%= @rss_link.id %>">Rss Link</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Title:</strong></dt>
+  <dd><%= @rss_link.title %></dd>
+  <dt><strong>Url:</strong></dt>
+  <dd><%= @rss_link.url %></dd>
+  <dt><strong>Description:</strong></dt>
+  <dd><%= @rss_link.description %></dd>
+  <dt><strong>Category</strong></dt>
+  <dd><%= @rss_link.category.name %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to "Back",
+              rss_links_path, :class => 'btn'  %>
+  <%= link_to "Edit",
+              edit_rss_link_path(@rss_link), :class => 'btn-success btn' %>
+  <%= link_to "Delete",
+              rss_link_path(@rss_link),
+              :method => 'delete',
+              :confirm => 'Are you sure?',
+              :class => 'btn btn-danger' %>
+</div>
+
+<% if @lists %>
+  <%= content_for :new_row do %>
+    <div class="span9">
+      <hr></hr>
+      <h3 title="<%= @rss_link.title %>">Add <%= truncate(@rss_link.title, length: 20) %> to lists</h3>
+      <hr></hr>
+      <div class='row'>
+        <div class='span5'>
+          <h4>Click on Add link to add the Rss Link in the list</h4>
+          <table class='table' id='lists'>
+            <% @lists.each do |list| %>
+              <% next if @rss_link.list_ids.include?(list.id) %>
+              <tr list-id="<%= list.id %>" title="<%= list.name %>">
+                <td><%= truncate(list.name, length: 20) %></td>
+                <td><a href='javascript:void(0)'>Add</a></td>
+              </tr>
+            <% end%>
+          </table>
+        </div>
+        <div class='span4'>
+          <h4>This Rss link is added in following lists</h4>
+          <div class="well" id="listTokens" style="min-height: 100px; padding: 5px 8px;">
+            <% @lists.select{|list| @rss_link.list_ids.include?(list.id)}.each do |list| %>
+              <span class='token' list-id="<%= list.id %>" title="<%=list.name %>">
+                <%= truncate(list.name, length: 20) %>
+                <a href="javascript: void(0)">x</a>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+    </div>
+  <% end %>
+<% end %>
+
+<%= content_for :js do %>
+  <%= javascript_include_tag "rss_links" %>
+<% end %>

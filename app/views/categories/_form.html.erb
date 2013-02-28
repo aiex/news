@@ -1,0 +1,13 @@
+<%= form_for(@category, html: {class: "form-horizontal"}) do |f| %>
+  <%= errors_for @category %>
+  <div class="control-group">
+    <label for="category_name" class="control-label">Category name</label>
+    <div class="controls">
+      <%= f.text_field :name, placeholder: "Write name for category", size: "30" %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= submit_tag "Save category", class: "btn btn-primary" %>
+    <%= link_to "Cancel", categories_path, class: "btn" %>
+  </div>
+<% end %>

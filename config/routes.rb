@@ -1,4 +1,15 @@
 RailsApp::Application.routes.draw do
+
+  root to: "news_feeds#index"
+
+  resources :categories
+  resources :news_feeds
+  resources :lists
+  resources :rss_links do
+    get 'check', :on => :member
+  end
+  match 'manage_rss_list/:list_id/:rss_id' => "lists#manage_list_rss_association", conditions: { method: "put"}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

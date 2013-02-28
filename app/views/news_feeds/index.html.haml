@@ -1,0 +1,40 @@
+= content_for :head do
+  = stylesheet_link_tag "news_feeds"
+.page-header
+  %h1{style: "font-style: italic;"} News Feeds
+#dashboard
+  .filter
+
+  - @news_feeds.each do |news_feed|
+    .newsFeed
+      .websiteImage.left= image_tag "rails.png", width: "45px", height: "45px"
+      .news.left
+        %div= link_to news_feed.title, news_feed.link, target: :blank
+        %div= news_feed.description
+        = timeago(news_feed.published_date)
+      .clear
+
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Id
+      %th Title
+      %th Description
+      %th Published date
+      %th Keyword
+      %th Image urls
+      %th Actions
+  %tbody
+    - @news_feeds.each do |news_feed|
+      %tr
+        %td= link_to news_feed.id, news_feed_path(news_feed)
+        %td= link_to news_feed.title, news_feed.link
+        %td= news_feed.description
+        %td= timeago(news_feed.published_date)
+        %td= news_feed.keywords
+        %td= news_feed.image_urls
+        %td
+          = link_to "Edit", edit_news_feed_path(news_feed), class: 'btn btn-mini'
+          = link_to "Delete", news_feed_path(news_feed),
+                      method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger'

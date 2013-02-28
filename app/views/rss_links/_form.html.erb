@@ -1,0 +1,54 @@
+<%= form_for @rss_link, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= errors_for @rss_link %>
+  <div class="control-group">
+    <%= f.label :url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :url, :class => 'text_field' %>
+      <span class = "rssLoader label label-info" style = "display: none;">
+        Please wait..
+      </span>
+      <%= image_tag "small-loader.gif", style: "display: none; margin-left: 5px;", class: "rssLoader" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <% if @rss_link.id.blank? %>
+        <%= f.text_field :title, disabled: '' %>
+      <% else %>
+        <%= f.text_field :title %>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <% if @rss_link.id.blank? %>
+        <%= f.text_area :description, disabled: '', rows: "5" %>
+      <% else %>
+        <%= f.text_area :description, rows: "5" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label_tag "home", "Home page url", :class => 'control-label' %>
+    <div class="controls">
+      <% if @rss_link.id.blank? %>
+        <%= f.text_field :home_url, disabled: '' %>
+      <% else %>
+        <%= f.text_field :home_url %>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :category_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :category_id, Category.select("id, name").collect{|c| [c.name, c.id]}, {include_blank: "Select category"} %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), rss_links_path, :class => 'btn' %>
+  </div>
+<% end %>
