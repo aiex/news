@@ -25,7 +25,7 @@
               :class => 'btn btn-danger' %>
 </div>
 
-<% if @lists %>
+<% unless @lists.empty? %>
   <%= content_for :new_row do %>
     <div class="span9">
       <hr></hr>

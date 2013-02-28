@@ -93,6 +93,6 @@ class ListsController < ApplicationController
   private
   def find_list
     @list = List.select("id, name, rss_link_ids").find_by_id(params[:id])
-    redirect_to lists_path, error: "List not found" unless @list
+    redirect_to lists_path, alert: "List not found" unless @list
   end
 end

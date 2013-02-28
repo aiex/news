@@ -40,9 +40,9 @@
     </div>
   </div>
   <div class="container">
-    <% if flash[:notice].present? || flash[:error].present? %>
+    <% if flash[:notice].present? || flash[:alert].present? %>
       <div class="alert <%= flash[:notice].present? ? 'alert-info' : '' %>">
-        <%= notice %>
+        <%= flash[:notice].present? ? flash[:notice] : flash[:alert] %>
         <a class="close" data-dismiss="alert" href="#">&times;</a>
       </div>
     <% end %>

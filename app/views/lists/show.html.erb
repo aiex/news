@@ -15,7 +15,7 @@
   <%= link_to "Delete", list_path(@list), :method => 'delete',
               :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
-<% if @rss_links %>
+<% unless @rss_links.empty? %>
   <%= content_for :new_row do %>
     <div class="span9">
       <hr></hr>
