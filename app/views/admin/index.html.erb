@@ -1,0 +1,20 @@
+<a href="/admin/update_rss" class="btn btn-success" data-remote="true">Update News</a>
+<a href="/admin/delete_old_news" class="btn btn-warning" data-remote="true">Delete old News updates</a>
+<img alt="updating" class="dn loading" src="/assets/big-loader.gif">
+
+<%#= link_to "Update News", "", class: "btn btn-success", remote: true %>
+<%#= link_to "Delete old News updates", "", class: "btn btn-warning", confirm: "Are you sure to remove old news updates?", id: "delete", remote: true %>
+<%#= image_tag "big-loader.gif", class: "dn loading" %>
+
+<span class="dn label label-info loading">Updating, please wait....</span>
+<%= content_for :js do %>
+  <script type="text/javascript">
+    $("a.btn").click(function(){
+      toggleDoms(".loading", "a.btn");
+      $("div.container:eq(1) .alert:first").remove();
+    });
+  </script>
+<% end %>
+
+
+

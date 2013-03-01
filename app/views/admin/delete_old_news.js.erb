@@ -1,0 +1,4 @@
+toggleDoms('a.btn', '.loading');
+<% unless @result %>
+  displayFlash("Too few records to delete. Deleting these records will not impact more.", "alert-error", true);
+<% end %>

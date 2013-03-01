@@ -38,3 +38,4 @@
           = link_to "Edit", edit_news_feed_path(news_feed), class: 'btn btn-mini'
           = link_to "Delete", news_feed_path(news_feed),
                       method: :delete, confirm: 'Are you sure?', class: 'btn btn-mini btn-danger'
+= paginate @news_feeds

@@ -6,7 +6,17 @@ class RssLink < ActiveRecord::Base
   validates :title, :url, :category_id, :home_url, presence: true
 
   belongs_to :category
+  has_many :news_feeds, dependent: :destroy
   after_destroy :remove_references
+
+
+  class << self
+    def update_news
+      select("id, url").each do |rss|
+        Parser.parse(rss)
+      end
+    end
+  end
 
   private
   def remove_references

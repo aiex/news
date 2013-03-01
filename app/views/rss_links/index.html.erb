@@ -28,6 +28,11 @@
                       :method => :delete,
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
                       :class => 'btn btn-mini btn-danger' %>
+          <%= link_to "Delete news",
+                      news_feed_path(rss_link),
+                      :method => :delete,
+                      :confirm => 'Are you sure to delete news for this RSS?',
+                      :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>

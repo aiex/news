@@ -76,7 +76,7 @@ class RssLinksController < ApplicationController
   # DELETE /rss_links/1
   # DELETE /rss_links/1.json
   def destroy
-    result = false #@rss_link.destroy
+    result = @rss_link.destroy
 
     respond_to do |format|
       format.html {

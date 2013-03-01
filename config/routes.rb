@@ -8,7 +8,10 @@ RailsApp::Application.routes.draw do
   resources :rss_links do
     get 'check', :on => :member
   end
-  match 'manage_rss_list/:list_id/:rss_id' => "lists#manage_list_rss_association", conditions: { method: "put"}
+  match "/admin" => "admin#index"
+  match "/admin/update_rss" => "admin#update_rss"
+  match '/admin/delete_old_news' => "admin#delete_old_news", conditions: { method: "delete"}
+  match '/manage_rss_list/:list_id/:rss_id' => "lists#manage_list_rss_association", conditions: { method: "put"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

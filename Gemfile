@@ -31,6 +31,7 @@ gem 'httparty', '0.10.2'
 gem 'nokogiri', '1.4.4'
 gem 'kaminari', '0.14.1'
 gem 'haml', '4.0.0'
+gem 'sax-machine'
 # gem "sax-machine", "~> 0.1.0"
 
 # To use ActiveModel has_secure_password

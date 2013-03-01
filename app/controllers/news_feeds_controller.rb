@@ -3,7 +3,7 @@ class NewsFeedsController < ApplicationController
   # GET /news_feeds
   # GET /news_feeds.json
   def index
-    @news_feeds = NewsFeed.page(params[:page]).per(20)
+    @news_feeds = NewsFeed.order("updated_at DESC").page(params[:page]).per(20)
     @recent_lists = List.select("id, name").order("updated_at DESC")
     respond_to do |format|
       format.html # index.html.erb
@@ -73,12 +73,12 @@ class NewsFeedsController < ApplicationController
   # DELETE /news_feeds/1
   # DELETE /news_feeds/1.json
   def destroy
-    @news_feed = NewsFeed.find(params[:id])
-    @news_feed.destroy
+    @news_feed = NewsFeed.where("rss_id = ?", params[:id]).delete_all
 
     respond_to do |format|
-      format.html { redirect_to news_feeds_url }
+      format.html { redirect_to :back, alert: "News from this Rss deleted" } #news_feeds_url }
       format.json { head :no_content }
     end
   end
+
 end
