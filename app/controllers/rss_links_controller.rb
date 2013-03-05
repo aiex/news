@@ -4,7 +4,7 @@ class RssLinksController < ApplicationController
   # GET /rss_links
   # GET /rss_links.json
   def index
-    @rss_links = RssLink.all
+    @rss_links = RssLink.select("id, home_url, title, url, description, category_id")
 
     respond_to do |format|
       format.html # index.html.erb

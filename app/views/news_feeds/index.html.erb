@@ -1,0 +1,41 @@
+<%= content_for :style do %>
+  <%= stylesheet_link_tag "news_feeds" %>
+<% end %>
+<div class='page-header'>
+ <h1 style="font-style: italic;">News Feeds</h1>
+</div>
+<%= content_for :new_row do %>
+<div class='span12 dashboard'>
+  <%= render "index", news_feeds: @news_feeds %>
+</div>
+<%= render "more_link", news_feeds: @news_feeds %>
+<% end %>
+<%= content_for :js do %>
+  <%= javascript_include_tag "jquery.masonry.min" %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".new").removeClass("new");
+      var $container = $('.dashboard');
+      $('.dashboard').imagesLoaded(function(){
+        $container.masonry({
+          itemSelector : '.newsFeed',
+        });
+      });
+
+      $(window).scroll(function() {
+        if($("#moreNews").length > 0) {
+          var scrollCenter = $(window).height();
+          var workOffsetTop = $("#moreNews").offset().top - $(document).scrollTop();
+          var workOffsetBot = workOffsetTop + 16;
+          if ((workOffsetBot > scrollCenter) || (workOffsetTop > scrollCenter))
+            ;
+          else{
+            $("#moreNews").find("a").trigger("click");
+            $("#moreNews").find("a").remove();
+          }
+        }
+      });
+
+    });
+  </script>
+<% end %>

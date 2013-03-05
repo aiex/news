@@ -1,0 +1,13 @@
+<% news_feeds.all.each do |nf| %>
+  <div class='newsFeed new' id="nf<%= nf.id %>">
+    <div class='newsImage'>
+      <%= image_tag nf.image_urls.first unless nf.image_urls.empty? %>
+    </div>
+    <div class='newsTitle'>
+      <%= link_to nf.title, nf.link, target: :blank %>
+    </div>
+    <div class='newsDescription'>
+      <%= nf.description %>
+    </div>
+  </div>
+<% end %>

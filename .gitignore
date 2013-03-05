@@ -14,3 +14,4 @@
 /log/*.log
 /tmp
 kalpesh_extensions.rb
+Offline Contents/*

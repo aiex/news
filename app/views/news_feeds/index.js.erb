@@ -1,0 +1,14 @@
+$("#moreNews").remove();
+var boxes = "<%= j(render 'index', news_feeds: @news_feeds) %>";
+$(".dashboard").masonry( 'destroy' );
+$(".dashboard").append(boxes);
+$('.dashboard').imagesLoaded(function(){
+  $('.dashboard').masonry({
+    itemSelector : '.newsFeed',
+  });
+});
+$("<%= j(render 'more_link', news_feeds: @news_feeds) %>").insertAfter(".dashboard");
+if($("#moreNews a").length == 0)
+  $("#moreNews").remove();
+$('html,body').animate({scrollTop: $("#nf<%= @news_feeds.first.id %>").offset().top-100},'slow');
+setTimeout(function(){ $(".new").removeClass("new"); }, 2000);

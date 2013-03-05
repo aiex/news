@@ -7,7 +7,7 @@ class NewsFeedsController < ApplicationController
     @recent_lists = List.select("id, name").order("updated_at DESC")
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @news_feeds }
+      format.js #{ render json: @news_feeds }
     end
   end
 
