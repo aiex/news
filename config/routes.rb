@@ -4,7 +4,11 @@ RailsApp::Application.routes.draw do
 
   resources :categories
   resources :news_feeds
-  resources :lists
+  resources :lists do
+    member do
+      get 'news_feeds'
+    end
+  end
   resources :rss_links do
     get 'check', :on => :member
   end

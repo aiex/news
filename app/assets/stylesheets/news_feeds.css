@@ -2,12 +2,17 @@
   background: none repeat scroll 0 0 #FFFFFF;  border: 3px solid #0074CC;
   border-radius: 5px 5px 5px 5px; padding-bottom: 10px;
 }
-.newsFeed{ border: 1px solid #0055CC; float: left; margin:5px; border-radius: 3px; width: 301px;}
+
+/*.newsFeed{ border: 1px solid #0055CC; float: left; margin:5px; border-radius: 3px; width: 301px;}*/
+.newsFeed{ border: 1px solid #0055CC; margin:5px; border-radius: 3px; }
 .websiteImage { overflow: hidden; height: 45px; width:45px; margin-right: 10px;}
 .filter, .newsFeed, .websiteImage {}
+
 .newsTitle, .newsDescription {padding: 5px;}
-.newsTitle a {font-size: 13px; font-style: italic; font-weight: bold; }
+.newsTitle a {font-size: 14px; font-style: italic; font-weight: bold; }
 .dashboard{margin-left: 10px; margin-right: 10px; }
 #moreNews{ background: url("/assets/big-loader.gif") no-repeat;
-    color: #4d4d4d; width:64px; display: inline-block; height:64px; }
-.new {background-color: rgba(255, 255, 0, 0.13);}
+    color: #4d4d4d; width:40px; display: inline-block; height:40px; margin-left: 425px;}
+.new {background-color: rgba(255, 255, 0, 0.31);}
+.timeAgo {display: block; text-align: right; padding: 0 5px 5px;}
+abbr[title] { cursor: default; }

@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_filter :find_list, only: [:show, :edit, :update, :destroy]
+  before_filter :find_list, only: [:show, :edit, :update, :destroy, :news_feeds]
   # GET /lists
   # GET /lists.json
   def index
@@ -39,6 +39,15 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @list }
+    end
+  end
+
+  def news_feeds
+    @news_feeds = NewsFeed.where("rss_id IN (?)", @list.rss_link_ids).includes(:rss_link).order("updated_at DESC").page(params[:page]).per(30)
+    @recent_lists = List.select("id, name").order("updated_at DESC")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js { render template: '/news_feeds/index.js.erb' }
     end
   end
 

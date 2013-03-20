@@ -2,13 +2,13 @@
   <%= stylesheet_link_tag "news_feeds" %>
 <% end %>
 <div class='page-header'>
- <h1 style="font-style: italic;">News Feeds</h1>
+ <h1 style="font-style: italic;"><%= @list.name %> - News</h1>
 </div>
 
 <%= content_for :new_row do %>
   <div class='span9 dashboard'>
-    <%= render "index", news_feeds: @news_feeds %>
-    <%= render "more_link", news_feeds: @news_feeds %>
+    <%= render "/news_feeds/index", news_feeds: @news_feeds %>
+    <%= render "/news_feeds/more_link", news_feeds: @news_feeds %>
   </div>
   <div class="span3">
     <% if @recent_lists %>

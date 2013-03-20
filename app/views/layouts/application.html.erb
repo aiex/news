@@ -48,20 +48,11 @@
     <% end %>
     <div class="row">
       <div class="span9"><%= yield %></div>
-      <div class="span3">
-        <% if @recent_lists %>
-          <!--h1>Lists</h1-->
-          <% @recent_lists.each do |recent_list| %>
-            <h3><a href='#' ><%= recent_list.name %></a></h3>
-          <% end %>
-        <% end %>
-      </div>
     </div>
     <div class="row"><%= yield :new_row %></div>
   </div>
 <div id='timeDelta' style="display: none;"></div>
 <%= javascript_include_tag "application" %>
 <%= yield :js %>
-<%#= javascript_tag("setTimeDelta('#{Time.now.getutc.iso8601}')") %>
 </body>
 </html>

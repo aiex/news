@@ -4,6 +4,7 @@ class NewsFeed < ActiveRecord::Base
   before_create :sanitize_fields
   serialize :image_urls, Array
 
+  belongs_to :rss_link, foreign_key: :rss_id
   def sanitize_fields
     self.description = ActionController::Base.helpers.strip_tags(self.description)
   end

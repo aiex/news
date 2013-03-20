@@ -6,7 +6,7 @@ class RssLink < ActiveRecord::Base
   validates :title, :url, :category_id, :home_url, presence: true
 
   belongs_to :category
-  has_many :news_feeds, dependent: :destroy
+  has_many :news_feeds, dependent: :destroy, foreign_key: :rss_id
   after_destroy :remove_references
 
 
