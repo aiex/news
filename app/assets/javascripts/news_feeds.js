@@ -1,5 +1,7 @@
 $(document).ready(function(){
   $(".new").removeClass("new");
+  if($("#moreNews a").length == 0)
+    $("#moreNews").remove();
   $(window).scroll(function() {
     if($("#moreNews").length > 0) {
       var scrollCenter = $(window).height() - 25;

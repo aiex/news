@@ -3,7 +3,7 @@ class NewsFeedsController < ApplicationController
   # GET /news_feeds
   # GET /news_feeds.json
   def index
-    @news_feeds = NewsFeed.order("updated_at DESC").includes(:rss_link).page(params[:page]).per(30)
+    @news_feeds = NewsFeed.order("updated_at DESC").includes(:rss_link).page(params[:page]).per(20)
     @recent_lists = List.select("id, name").order("updated_at DESC")
     respond_to do |format|
       format.html # index.html.erb
