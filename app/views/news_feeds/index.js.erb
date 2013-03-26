@@ -5,5 +5,5 @@ $(".dashboard").append("<%= j(render '/news_feeds/more_link', news_feeds: @news_
 if($("#moreNews a").length == 0)
   $("#moreNews").remove();
 $("abbr.timeago").timeago();
-$('html,body').animate({scrollTop: $("#nf<%= @news_feeds.first.id %>").offset().top-150},'slow');
+$('html,body').animate({scrollTop: $("#nf<%= @news_feeds.first.id %>").offset().top-100},'slow');
 setTimeout(function(){ $(".new").removeClass("new"); }, 3000);
