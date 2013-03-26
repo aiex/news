@@ -13,6 +13,6 @@
 .dashboard{margin-left: 10px; margin-right: 10px; }
 #moreNews{ background: url("/assets/big-loader.gif") no-repeat;
     color: #4d4d4d; width:40px; display: inline-block; height:40px; margin-left: 425px;}
-.new {background-color: rgba(255, 255, 0, 0.31);}
+.new {background-color: rgba(255, 255, 166, 0.31);}
 .timeAgo {display: block; text-align: right; padding: 0 5px 5px;}
 abbr[title] { cursor: default; }
