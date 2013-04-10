@@ -21,4 +21,5 @@
 
 <%= content_for :js do %>
   <%= javascript_include_tag "news_feeds" %>
+  <%= javascript_tag("setTimeDelta('#{Time.now.getutc.iso8601}');") %>;
 <% end %>

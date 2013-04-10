@@ -16,4 +16,3 @@ $(document).ready(function(){
     }
   });
 });
-setTimeDelta("<%= Time.now.getutc.iso8601 %>");
