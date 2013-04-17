@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   end
 
   def cron
-    @crons = Cron.select("id, status, created_at, finished_at")
+    @crons = Cron.select("id, status, created_at, finished_at").page(params[:page]).per(20).order("created_at DESC")
   end
 
   def update_rss
