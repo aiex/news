@@ -28,4 +28,9 @@ module ApplicationHelper
       '<li>'.html_safe
     end
   end
+
+  def cron_class(status)
+    klass = {'Started' => 'label-warning', 'Finished' => 'label-success', 'Failed' => 'label-important'}
+    klass[status]
+  end
 end

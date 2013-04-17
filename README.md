@@ -47,7 +47,7 @@ will be the same.
     <th>Variable</th>
   </tr>
   <tr>
-    <td>config/initializers/secret_token.rb</td> 
+    <td>config/initializers/secret_token.rb</td>
     <td>Railsapp::Application.config.secret_token</td>
   </tr>
   <tr>
@@ -70,7 +70,7 @@ will be the same.
    ```
    +++ config/initializers/wrap_parameters.rb
    @@ -5,7 +5,7 @@
-    
+
      # Enable parameter wrapping for JSON. You can disable this by setting :format to an empty array.
       ActiveSupport.on_load(:action_controller) do
       -  wrap_parameters format: [:json]
@@ -109,3 +109,6 @@ License
 -------
 
 This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+
+SSH TO SERVER:
+ssh 512b1293500446d1e90000bb@news-kalpeshonrails.rhcloud.com

@@ -13,6 +13,7 @@ RailsApp::Application.routes.draw do
     get 'check', :on => :member
   end
   match "/admin" => "admin#index"
+  match "/admin/cron" => "admin#cron"
   match "/admin/update_rss" => "admin#update_rss"
   match '/admin/delete_old_news' => "admin#delete_old_news", conditions: { method: "delete"}
   match '/manage_rss_list/:list_id/:rss_id' => "lists#manage_list_rss_association", conditions: { method: "put"}
