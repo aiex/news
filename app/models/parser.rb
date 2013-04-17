@@ -90,7 +90,7 @@ class Parser
       end
 
       last_published_date = NewsFeed.select("MAX(published_date) AS published_date").where(rss_id: rss.id).last.try(:published_date)
-      print "last_published_date", last_published_date, last_published_date.class
+      puts "last_published_date", last_published_date
       feeds.feeds.each do |feed|
         pub_date = feed.published_date.to_datetime rescue nil
         next if last_published_date && pub_date && (last_published_date >= feed.published_date)

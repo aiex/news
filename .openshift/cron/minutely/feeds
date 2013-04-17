@@ -1,0 +1,1 @@
+rake update_news RAILS_ENV=production

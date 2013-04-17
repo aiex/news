@@ -8,7 +8,7 @@
       <%= link_to nf.rss_link.title, nf.rss_link.url, target: :blank %>
     </div>
     <div class='newsDescription'>
-      <%= nf.description %>
+      <%= nf.description.html_safe %>
     </div>
     <div class="timeAgo"><%= timeago(nf.published_date) %></div>
   </div>
