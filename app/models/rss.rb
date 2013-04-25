@@ -75,10 +75,19 @@ class Feed
   element :guid, :as => :entry_id
   element :id, :as=> :entry_id
 
+  # Media content
+  element :"media:content", :value=> :url, :as => :media_content #, :class => MediaContent
+  element :"media:thumbnail", :value=> :url, :as => :media_content
+  element :enclosure, :value=> :url, :as => :media_content #, :with=>{:type=>"image"}
+  element :"im:image", :as => :media_content
+  element :"itms:coverArt", :as => :media_content
+  element :"g:image_link", :as => :media_content
+  element :link, :value=> :href, :as => :media_content, :with => {:rel=>"enclosure"}
+
   # element :enclosure, as: :images, class: AtomImage
   # element :content, as: :image, class: AtomImage
   def media_image
-    (@media_content && @media_content =~ /(jpg|jpeg|tiff|png)$/i) ? @media_content : nil
+    (@media_content && @media_content =~ /(jpg|jpeg|tiff|png)/i) ? @media_content : nil
   end
 end
 
