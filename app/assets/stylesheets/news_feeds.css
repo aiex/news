@@ -1,5 +1,6 @@
 .newsFeed{ border: 1px solid #0055CC; margin:5px; border-radius: 3px; }
-.newsTitle, .newsDescription, .newsImage img {padding: 5px;}
+.newsTitle, .newsDescription, .newsImage img {margin: 5px;}
+.newsImage img { border: 1px solid; border-radius: 3px; }
 .newsImage {display: block; float: left;}
 .newsTitle a {font-size: 14px; font-style: italic; font-weight: bold; }
 .dashboard{margin-left: 10px; margin-right: 10px; }
