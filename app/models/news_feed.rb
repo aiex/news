@@ -11,7 +11,7 @@ class NewsFeed < ActiveRecord::Base
 
   def self.delete_old_news
     delete_count = where("created_at < ?", Time.now - 2.week).count
-    total_count = count
+    total_count = self.count
     if total_count - delete_count >= 500
       where("created_at < ?", Time.now - 2.week).delete_all
       return true

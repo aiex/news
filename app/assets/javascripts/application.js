@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap/bootstrap-alert
+//= require bootstrap/bootstrap-button
+//= require bootstrap/bootstrap-dropdown
 //= require timeago
 $(document).ready(function() {
   $("abbr.timeago").timeago();
