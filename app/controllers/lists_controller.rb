@@ -44,9 +44,8 @@ class ListsController < ApplicationController
 
   def news_feeds
     @news_feeds = NewsFeed.where("rss_id IN (?)", @list.rss_link_ids).includes(:rss_link).order("published_date DESC").page(params[:page]).per(20)
-    @recent_lists = List.select("id, name").order("updated_at DESC")
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { @recent_lists_json = List.select("id, name").order("updated_at DESC").limit(10).to_json }
       format.js { render template: '/news_feeds/index.js.erb' }
     end
   end

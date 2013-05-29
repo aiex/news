@@ -3,10 +3,11 @@ class NewsFeedsController < ApplicationController
   # GET /news_feeds
   # GET /news_feeds.json
   def index
-    @news_feeds = NewsFeed.order("published_date DESC").includes(:rss_link).page(params[:page]).per(20)
-    @recent_lists = List.select("id, name").order("updated_at DESC")
+    @news_feeds = NewsFeed.select("id, title, description, link, published_date, image_urls, rss_id").order("published_date DESC").includes(:rss_link).page(params[:page]).per(20)
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {
+        @recent_lists_json = List.select("id, name").order("updated_at DESC").limit(10).to_json
+      }
       format.js #{ render json: @news_feeds }
     end
   end

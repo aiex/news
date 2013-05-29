@@ -7,19 +7,10 @@
 
 <%= content_for :new_row do %>
   <div class='span9 dashboard'>
-    <%= render "/news_feeds/index", news_feeds: @news_feeds %>
-    <%= render "/news_feeds/more_link", news_feeds: @news_feeds %>
+    <div id='moreNews' style="display: none;">
+      <%= link_to_next_page @news_feeds, '', remote: true %>
+    </div>
   </div>
-  <div class="span3">
-    <% if @recent_lists %>
-      <% @recent_lists.each do |recent_list| %>
-        <h3><%= link_to recent_list.name, news_feeds_list_path(recent_list) %></h3>
-      <% end %>
-    <% end %>
-  </div>
+  <div class="span3 lists"></div>
 <% end %>
-
-<%= content_for :js do %>
-  <%= javascript_include_tag "news_feeds" %>
-  <%= javascript_tag("setTimeDelta('#{Time.now.getutc.iso8601}');") %>;
-<% end %>
+<%= render '/news_feeds/feed_js' %>

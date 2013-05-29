@@ -1,0 +1,14 @@
+= content_for :style do
+  = stylesheet_link_tag "news_feeds"
+.page-header
+  %h1{:style => "font-style: italic;"} News Feeds
+= content_for :new_row do
+  .span9.dashboard
+    =# render "index", news_feeds: @news_feeds
+    #moreNews{style: "display: none;"}
+      = link_to_next_page @news_feeds, '', remote: true
+  .span3.lists
+    - if false #@recent_lists
+      - @recent_lists.each do |recent_list|
+        %h3= link_to recent_list.name, news_feeds_list_path(recent_list)
+= render '/news_feeds/feed_js'

@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226064223) do
+ActiveRecord::Schema.define(:version => 20130417111031) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "crons", :force => true do |t|
+    t.string   "status",      :default => "Started"
+    t.datetime "finished_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "lists", :force => true do |t|
@@ -39,6 +46,9 @@ ActiveRecord::Schema.define(:version => 20130226064223) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "news_feeds", ["published_date"], :name => "index_news_feeds_on_published_date"
+  add_index "news_feeds", ["rss_id", "published_date"], :name => "index_news_feeds_on_rss_id_and_published_date"
+
   create_table "rss_links", :force => true do |t|
     t.string   "title"
     t.string   "url"
@@ -49,5 +59,7 @@ ActiveRecord::Schema.define(:version => 20130226064223) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "rss_links", ["category_id"], :name => "index_rss_links_on_category_id"
 
 end
