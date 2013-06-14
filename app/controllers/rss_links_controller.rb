@@ -89,7 +89,7 @@ class RssLinksController < ApplicationController
 
   private
   def find_rss
-    @rss_link = RssLink.select("id, title, list_ids, url, description, category_id").find_by_id(params[:id])
+    @rss_link = RssLink.select("id, title, list_ids, url, description, category_id, home_url").find_by_id(params[:id])
     redirect_to rss_links_path, alert: "Rss link not found" unless @rss_link
   end
 end
