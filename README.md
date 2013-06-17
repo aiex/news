@@ -112,4 +112,3 @@ This code is dedicated to the public domain to the maximum extent permitted by a
 
 SSH TO SERVER:
 ssh 512b1293500446d1e90000bb@news-kalpeshonrails.rhcloud.com
-
