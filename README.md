@@ -113,3 +113,6 @@ This code is dedicated to the public domain to the maximum extent permitted by a
 
 SSH TO SERVER:
 ssh 512b1293500446d1e90000bb@news-kalpeshonrails.rhcloud.com
+
+
+cd /var/lib/openshift/512b1293500446d1e90000bb/app-root/repo && /opt/rh/ruby193/root/usr/bin/rake update_news RAILS_ENV=production
