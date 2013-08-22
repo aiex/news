@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
-gem 'rack', '>= 1.4.5'
+gem 'rails', '~> 3.2.13'
+gem 'rack', '~> 1.4.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -21,8 +21,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'turbo-sprockets-rails3', '0.3.6'
 end
 gem 'execjs', '1.4.0'
 gem 'therubyracer', '0.10.2'
