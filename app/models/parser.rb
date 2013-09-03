@@ -33,6 +33,7 @@ class Parser
       last_published_date = NewsFeed.select("MAX(published_date) AS published_date").where(rss_id: rss.id).last.try(:published_date)
       #puts "last_published_date", last_published_date if Rails.env == 'development'
       feeds.feeds.each do |feed|
+        DbLogger.log("PUBLISHED DATE, PD.to_datetime, last_published_date #{feed.published_date} #{(feed.published_date.to_datetime rescue nil)} #{last_published_date}")
         pub_date = feed.published_date.to_datetime rescue nil
         next if last_published_date && pub_date && (last_published_date >= feed.published_date)
         NewsFeed.create(
