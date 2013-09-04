@@ -116,3 +116,7 @@ ssh 512b1293500446d1e90000bb@news-kalpeshonrails.rhcloud.com
 
 
 cd /var/lib/openshift/512b1293500446d1e90000bb/app-root/repo && /opt/rh/ruby193/root/usr/bin/rake update_news RAILS_ENV=production
+news
+====
+
+Online RSS Parsing News Application
